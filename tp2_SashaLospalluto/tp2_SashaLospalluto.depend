@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1526078744 source:c:\users\sasha\documents\tp2\tp2_sashalospalluto\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones.h"
+	"FuncionesImput.h"
+
+1526081498 c:\users\sasha\documents\tp2\tp2_sashalospalluto\funciones.h
+
+1525607612 c:\users\sasha\documents\tp2\tp2_sashalospalluto\funcionesimput.h
+
+1526075236 source:c:\users\sasha\documents\tp2\tp2_sashalospalluto\funcionesimput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"funciones.h"
+
+1526080804 source:c:\users\sasha\documents\tp2\tp2_sashalospalluto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"FuncionesImput.h"
+
