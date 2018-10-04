@@ -1,8 +1,7 @@
 #ifndef ARRAYEMPLOYEES_H_INCLUDED
 #define ARRAYEMPLOYEES_H_INCLUDED
-#define ELEMENTS 1000
-#define TRUE 0
-#define FALSE 1
+#define ELEMENTS 50
+#include <string.h>
 
 struct
 {
@@ -38,7 +37,17 @@ int initEmployees(Employee* list, int len);
 free space] - (0) if Ok
  *
 */
-int addEmployee(Employee list, int len, int id, char name[],char lastName[],float salary,int sector);
+
+/** \brief busca si hay espacio libre
+ *
+ * \param list Employee*
+ * \param len int
+ * \return Devuelve 1 si hay lugar, de no haberlo devuelve -1
+ *
+ */
+int buscarEspacio (Employee* list, int len);
+
+int addEmployee(Employee* list, int len, int id, char name[],char lastName[],float salary,int sector);
 
 
 /** \brief find an Employee by Id en returns the index position in array.
@@ -87,5 +96,9 @@ int sortEmployees(Employee* list, int len, int order);
 int printEmployees(Employee* list, int length);
 
 
+
+
+
+void harcodearEmpleados(Employee* list);
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED
