@@ -4,28 +4,7 @@
 #include <string.h>
 
 
-void harcodearEmpleados(Employee* list)
-{
 
-    Employee x[]=
-    {
-        {1111, "juan", "mendez", 23000,1,},
-        {2222, "luis", "martinez", 18000, 1},
-        {1234, "ana", "flores", 21000, 5},
-        {5643, "melisa", "fernandez", 24000, 2},
-        {2312, "mia", "zatima", 34000, 3},
-        {7768, "mauro", "muleiro", 19000,5},
-        {1324, "alberto", "maz", 26000, 4},
-        {9876, "valentina", "funcho", 32000,5}
-
-    };
-    for(int i=0; i < 8; i++)
-    {
-        list[i].isEmpty=1;
-        list[i] = x[i];
-    }
-
-    }
 int initEmployees(Employee* list, int len)
 {
     int resultado=-1;
@@ -63,7 +42,7 @@ int addEmployee(Employee* list, int len, int id, char name[],char lastName[],flo
             list[i].salary=salary;
             list[i].sector=sector;
             list[i].isEmpty=1;
-            printf("\n\nsu ID es: %d",list[i].id);
+            printf("\n\nsu ID es: %d y posicion %d",list[i].id,i);
             return 0;
 
         }
@@ -109,20 +88,71 @@ int sortEmployees(Employee* list, int len, int order)
     Employee listAux;
     int resultado=0;
 
-    for (int i=0;i<len-1;i++)
+    if (order==1)
     {
-        for (int j=i+1;j<len;j++)
+        for (int i=0; i<len-1; i++)
         {
-            if (strcmp(list[i].lastName,list[j].lastName)==1)
+            for (int j=i+1; j<len; j++)
             {
-                listAux=list[i];
-                list[i]=list[j];
-                list[j]=listAux;
-                resultado=1;
+                if (strcmp(list[i].lastName,list[j].lastName)>0)
+                {
+                    if(list[i].isEmpty == 1) //aca verifico cual es el apellido de forma ascendente
+                    {
+                        listAux=list[i];
+                        list[i]=list[j];
+                        list[j]=listAux;
+                        resultado=1;
 
+                        if (strcmp(list[i].lastName,list[j].lastName)==0) //verifico si son iguales
+                        {
+                            if (list[i].sector<list[j].sector) //verifico los sectores
+                            {
+                                listAux=list[j];
+                                list[j]=list[i];
+                                list[i]=listAux;
+                                resultado=1;
+                            }
+                        }
+
+                    }
+
+                }
             }
         }
     }
+    if (order==0)
+    {
+        for (int i=0; i<len-1; i++)
+        {
+            for (int j=i+1; j<len; j++)
+            {
+                if (strcmp(list[i].lastName,list[j].lastName)<0)
+                {
+                    if(list[i].isEmpty == 1) //aca verifico cual es el apellido de forma descendente
+                    {
+                        listAux=list[j];
+                        list[j]=list[i];
+                        list[i]=listAux;
+                        resultado=1;
+
+                        if (strcmp(list[i].lastName,list[j].lastName)==0) //verifico si son iguales
+                        {
+                            if (list[i].sector>list[j].sector) //verifico los sectores
+                            {
+                                listAux=list[i];
+                                list[i]=list[j];
+                                list[j]=listAux;
+                                resultado=1;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
 
     return resultado;
 
@@ -130,17 +160,18 @@ int sortEmployees(Employee* list, int len, int order)
 
 int printEmployees(Employee* list, int length)
 {
-    printf("Id   Nombre  Apellido   Salario   Sector\n\n");
+    printf("   Id    Nombre    Apellido     Salario     Sector\n\n");
 
     for(int i=0; i < length; i++)
     {
 
-        if( list[i].isEmpty == 0)
+        if( list[i].isEmpty == 1)
         {
             printf("%4d %10s %10s     %6.2f %10d\n", list[i].id, list[i].name, list[i].lastName, list[i].salary, list[i].sector);
         }
     }
 
+    return 0;
 }
 
 

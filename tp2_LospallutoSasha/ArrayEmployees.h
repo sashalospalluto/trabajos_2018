@@ -96,9 +96,13 @@ int sortEmployees(Employee* list, int len, int order);
 int printEmployees(Employee* list, int length);
 
 
-
-
-
-void harcodearEmpleados(Employee* list);
+/** \brief busca espacio en la estructura
+ *
+ * \param list Employee*
+ * \param int len
+ * \return int
+ *
+ */
+int buscarEspacio (Employee* list, int len);
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED

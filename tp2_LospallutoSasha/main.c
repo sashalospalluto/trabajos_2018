@@ -14,13 +14,12 @@ int main()
     int sector;
     int id=0;
     int aux;
-    int i;
     int manera;
 
     Employee Eemplo[ELEMENTS];
 
     r=initEmployees(Eemplo,ELEMENTS);
-    harcodearEmpleados(Eemplo);
+
 
     while (seguir=='s')
     {
@@ -184,7 +183,7 @@ int main()
             {
                 printf("\n\topciones de orden");
                 printf("\n1-Ascendente");
-                printf("\n2-Descendente");
+                printf("\n0-Descendente");
                 printf("\n\tIngrese opcion: ");
                 scanf("%d",&manera);
 
