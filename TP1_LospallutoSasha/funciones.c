@@ -2,71 +2,80 @@
 #include <stdlib.h>
 #include "funciones.h"
 
-
-float funcionSuma(float primerNumero,float segundoNumero)
+void funcionSuma (float num1, float num2, float* suma)
 {
-    float respuesta;
-    respuesta=primerNumero+segundoNumero;
-    return respuesta;
+    float sumaFunc;
+    sumaFunc = num1+num2;
+    *suma=sumaFunc;
 }
 
-float funcionResta(float primerNumero,float segundoNumero)
+void funcionResta (float num1,float num2,float* resta)
 {
-    float respuesta;
-    respuesta=primerNumero-segundoNumero;
-    return respuesta;
+    float restaFunc;
+    restaFunc = num1-num2;
+    *resta=restaFunc;
 }
 
-float funcionMultiplicar(float primerNumero,float segundoNumero)
+void funcionMultiplicar (float num1,float num2, float* multiplicar)
 {
-    float respuesta;
-    respuesta=primerNumero*segundoNumero;
-    return respuesta;
+    float multiplicarfunc;
+    multiplicarfunc=num1*num2;
+    *multiplicar=multiplicarfunc;
 }
 
-float funcionDividir(float primerNumero,float segundoNumero)
+int funcionDividir (float num1, float num2, float* dividir)
 {
-    float respuesta;
-    respuesta=primerNumero/segundoNumero;
-    return respuesta;
-}
+    int ret;
+    float dividirFunc;
 
-int funcionFactorial(float numero) // falta int num
-{
-    //num=numero;
-    if (numero<0)
+    if (num2==0)
     {
-        return -1;
-    }
-  //  if (numero-num) //saber si es decimal
-  //  {
-  //      return -1;
-  //  }
-    if (numero==1 || numero==0)
-    {
-        return 1;
-    }   else
-        {
-            return numero*funcionFactorial(numero-1);
-        }
-}
-
-void funcionValidarFactorial (float primerNumero, float segundoNumero, float factorial1, float factorial2)
-{
-    if(factorial1==-1 && factorial2==-1)
-    {
-        printf("\n\nNo se puede factorizar el numero %.0f y el numero %.0f\n\n",primerNumero,segundoNumero);
-    }
-    else  if (factorial1==-1 && factorial2>0)
-    {
-        printf("\n\nNo se puede factorizar el numero %.0f, pero el factorial de %.0f es: %.0f\n\n",primerNumero,segundoNumero,factorial2);
-    }
-    else  if (factorial1>0 && factorial2==-1)
-    {
-        printf("\n\nNo se puede factorizar el numero %.0f, pero el factorial de %.0f es: %.0f\n\n",segundoNumero,primerNumero,factorial1);
+        ret=-1;
     }
     else
     {
-        printf("\n\nel factorial de %.0f es: %.0f, y el factorial de %.0f es: %.0f \n\n",primerNumero,factorial1,segundoNumero,factorial2);
+        dividirFunc=num1/num2;
+        *dividir=dividirFunc;
+        ret=0;
+    }
+
+    return ret;
+
+}
+
+void funcionFactorial (float* num, int* factorial)
+{
+    int factorialFunc=1;
+
+    if (num<0)
+    {
+        *factorial=-1;
+    }
+    else if (num==0 || num==1)
+    {
+        *factorial=1;
+    }
+    else
+    {
+        for (int i=num; i<1; i--)
+        {
+            factorialFunc=factorialFunc*i;
+        }
+
+        *factorial=factorialFunc;
     }
 }
+
+void funcionMostrarFactorial(float num,int factorial)
+{
+    if(factorial==-1)
+    {
+        printf("el numero %.2f no se puede factorear. ",num);
+    }else
+    {
+        printf("el factorial de %.2f es: %d.",num,factorial);
+    }
+}
+
+
+

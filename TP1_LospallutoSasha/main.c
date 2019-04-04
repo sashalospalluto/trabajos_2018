@@ -1,21 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
+
 int main()
 {
-    float numeroA=0;
-    float numeroB=0;
+    float numeroA;
+    float numeroB;
     char seguir='s';
-    int opcion=0;
+    int opcion;
     float suma;
     float resta;
     float division;
     float multiplicacion;
-    float factorialA;
-    float factorialB;
-    //int num;
+    int factorialA;
+    int factorialB;
+    int resultadoDivision; //resultado de la funcion "funcionDividir"
 
-    while (seguir=='s')
+
+
+    int rta;
+        while (seguir=='s')
     {
         system("cls");
         printf("\t\tMENU");
@@ -31,70 +35,56 @@ int main()
             scanf("\n%d",&opcion);
         }while (opcion<1 || opcion>5);
 
-    switch (opcion)
-    {
-    case 1:
+      switch (opcion)
 
-        system("cls");
-        printf("\n\n1-Ingrese el 1er numero: ");
-        scanf("%f",&numeroA);
-        break;
+                {
+                case 1:
+                    system("cls");
+                    printf("Ingrese el primer operando: ");
+                    scanf("%f",&numeroA);
+                    break;
+                case 2:
+                    system("cls");
+                    printf("Ingrese el segundo operando: ");
+                    scanf("%f",&numeroB);
+                    break;
+                case 3:
+                    funcionSuma(numeroA, numeroB,&suma);
+                    funcionResta(numeroA, numeroB,&resta);
+                    funcionMultiplicar(numeroA, numeroB, &multiplicacion);
+                    resultadoDivision=funcionDividir(numeroA, numeroB,&division);
+                    funcionFactorial(&numeroA,&factorialA);
+                    funcionFactorial(&numeroB, &factorialB);
+                    printf("\n\nProceso realizado\n");
+                    system("pause");
+                    break;
+                case 4:
+                    //SUMA
+                    printf("\nLa suma de %.2f + %.2f es: %.2f\n\n", numeroA, numeroB, suma);
+                    //RESTA
+                    printf("La resta de %.2f - %.2f es: %.2f\n\n", numeroA,numeroB, resta);
+                    //MULTIPLICACION
+                    printf("La multiplicacion de %.2f * %.2f es: %.2f\n\n", numeroA,numeroB, multiplicacion);
+                    //DIVISION
+                    if (resultadoDivision==0)
+                    {
+                        printf("La division de %.2f / %.2f es: %.2f\n\n", numeroA,numeroB, division);
+                    }
+                    else
+                    {
+                        printf("No se puede dividir por cero\n\n");
+                    }
+                    //FACTORIAL
+                    funcionMostrarFactorial(numeroA,factorialA);
+                    //funcionMostrarFactorial(numeroB,factorialB);
 
-    case 2:
 
-        system("cls");
-        printf("\n\n1-Ingrese el 2do numero: ");
-        scanf("%f",&numeroB);
-        break;
-
-    case 3:
-
-        suma=funcionSuma(numeroA,numeroB);
-        resta=funcionResta(numeroA,numeroB);
-        division=funcionDividir(numeroA,numeroB);
-        multiplicacion=funcionMultiplicar(numeroA,numeroB);
-        factorialA=funcionFactorial(numeroA);
-        factorialB=funcionFactorial(numeroB);
-        printf("\n\nDatos guardados correctamente \n\n\n");
-        system("pause");
-        break;
-
-    case 4:
-        system("cls");
-        printf("\t\tRESULTADOS");
-        //suma
-        printf("\n\nLa suma es: %.2f",suma);
-
-        //resta
-        printf("\n\nla resta es: %.2f",resta);
-
-        //division
-        if (numeroB==0)
-        {
-            printf("\n\nNo se puede dividir porque su denominador es cero");
-
-        }   else
-            {
-                printf("\n\nLa division es: %.2f",division);
-            }
-
-        //multiplicacion
-        printf("\n\nLa multiplicacion es: %.2f",multiplicacion);
-
-        //factorial
-
-        funcionValidarFactorial(numeroA,numeroB,factorialA,factorialB);
-        system("pause");
-        break;
-
-    case 5:
-
-        seguir='n';
-        break;
-
+                    system("pause");
+                    break;
+                case 5:
+                    seguir='f';
+                    break;
+                }
     }
 
-    }
-
-    return 0;
 }
