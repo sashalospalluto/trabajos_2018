@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Funciones_Validaciones.h"
+#include "function.h"
 #include "funciones.h"
 
 void funcionSuma (float num1, float num2, float* suma)
@@ -43,21 +45,22 @@ int funcionDividir (float num1, float num2, float* dividir)
 
 }
 
-void funcionFactorial (float* num, int* factorial)
+void funcionFactorial (float* num, unsigned long long int* factorial)
 {
     int factorialFunc=1;
+    int numero=(*num);
 
-    if (num<0)
+    if (numero<0)
     {
-        *factorial=-1;
+        factorialFunc=-1;
     }
-    else if (num==0 || num==1)
+    else if (numero==0 || numero==1)
     {
-        *factorial=1;
+        factorialFunc=1;
     }
     else
     {
-        for (int i=num; i<1; i--)
+        for (int i=numero; i>1; i--)
         {
             factorialFunc=factorialFunc*i;
         }
@@ -66,14 +69,14 @@ void funcionFactorial (float* num, int* factorial)
     }
 }
 
-void funcionMostrarFactorial(float num,int factorial)
+void funcionMostrarFactorial(float num,unsigned long long int factorial)
 {
     if(factorial==-1)
     {
         printf("el numero %.2f no se puede factorear. ",num);
     }else
     {
-        printf("el factorial de %.2f es: %d.",num,factorial);
+        printf("el factorial de %.2f es: %llu .",num,factorial);
     }
 }
 
